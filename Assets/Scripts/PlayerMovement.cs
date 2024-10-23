@@ -56,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     void MyInput()
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
-
         verticalMovement = Input.GetAxisRaw("Vertical");
 
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
