@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 12822607}
   - component: {fileID: 12822606}
   - component: {fileID: 12822605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 391531207}
   - component: {fileID: 391531206}
   - component: {fileID: 391531205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2120872128}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &720464177
 CapsuleCollider:
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 911205688}
   - component: {fileID: 911205687}
   - component: {fileID: 911205686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 1237440874}
   - component: {fileID: 1237440873}
   - component: {fileID: 1237440872}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,6 +907,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237440870}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1321225467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321225468}
+  m_Layer: 0
+  m_Name: Orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321225468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321225467}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2120872128}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1423811142
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +950,7 @@ GameObject:
   - component: {fileID: 1423811146}
   - component: {fileID: 1423811145}
   - component: {fileID: 1423811144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,7 +1064,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2120872128}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1908589870
 GameObject:
@@ -1060,13 +1091,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908589870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -5.28}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 620914433}
-  m_Father: {fileID: 2120872128}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908589872
 MonoBehaviour:
@@ -1112,12 +1143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149624e80b58f2c4c9c5064de8f88c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 1321225468}
   moveSpeed: 6
   airMultiplier: 0.4
   jumpKey: 32
   jumpForce: 15
   groundDrag: 6
-  airDrag: 2
+  airDrag: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!54 &2120872127
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1146,9 +1181,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1908589871}
   - {fileID: 720464176}
   - {fileID: 1451990614}
+  - {fileID: 1321225468}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1167,4 +1202,4 @@ MonoBehaviour:
   sensX: 150
   sensY: 150
   cam: {fileID: 1908589871}
-  orientation: {fileID: 0}
+  orientation: {fileID: 1321225468}

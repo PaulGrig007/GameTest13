@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     float playerHeight = 2f;
 
+    [SerializeField] Transform orientation;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed = 6f;
     [SerializeField] float airMultiplier = 0.4f;
@@ -19,17 +21,19 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Drag")]
     [SerializeField] float groundDrag = 6f;
-    [SerializeField] float airDrag = 2f;
+    [SerializeField] float airDrag = 1f;
 
 
     float horizontalMovement;
-    float veryicalMovement;
+    float verticalMovement;
 
+    [Header("Ground Detection")]
+    [SerializeField] LayerMask groundMask;
+    bool isGrounded;
+    float groundDistance = 0.4f;
 
 
     Vector3 moveDirection;
-
-    bool isGrounded;
     Rigidbody rb;
 
     private void Start()
@@ -39,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f);
+        isGrounded = Physics.CheckSphere(transform.position - new Vector3(0, 1, 0), groundDistance, groundMask);
 
         MyInput();
         ControlDrag();
@@ -53,9 +57,9 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
 
-        veryicalMovement = Input.GetAxisRaw("Vertical");
+        verticalMovement = Input.GetAxisRaw("Vertical");
 
-        moveDirection = transform.forward * veryicalMovement + transform.right * horizontalMovement;
+        moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
 
     }
 
